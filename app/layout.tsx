@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   description: "Te invito a compartir conmigo la alegría de mis quince años. Mis padres y yo hemos preparado con mucho cariño una noche inolvidable.",
   generator: 'v0.app',
   
-  // Open Graph (Facebook, WhatsApp, LinkedIn)
   openGraph: {
     title: 'Quince Años de Sofía',
     description: 'Te invito a compartir conmigo la alegría de mis quince años',
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Quince Años de Sofía',
     images: [
       {
-        url: '/og-image.jpg', // Coloca tu imagen en public/og-image.jpg
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Invitación Quince Años de Sofía',
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
   
-  // Twitter
   twitter: {
     card: 'summary_large_image',
     title: 'Quince Años de Sofía',
@@ -33,13 +31,11 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   
-  // Otros metadatos útiles
   robots: {
     index: true,
     follow: true,
   },
   
-  // Para cuando la agreguen a la pantalla de inicio del móvil
   applicationName: 'Quince Años de Sofía',
   appleWebApp: {
     capable: true,

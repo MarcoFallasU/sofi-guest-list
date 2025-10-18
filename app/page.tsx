@@ -2,6 +2,16 @@
 
 import { useState, useEffect } from "react"
 import { Calendar, MapPin, Music, Users, Heart, DollarSign, Shirt, ExternalLink } from "lucide-react"
+import { PhotoCarousel } from "@/components/photo-carousel"
+import Image from "next/image"
+import img1 from "@/public/image1.jpg"
+import img2 from "@/public/image2.jpg"
+import img3 from "@/public/image3.jpg"
+import img4 from "@/public/image4.jpg"
+import img5 from "@/public/image5.jpg"
+import img6 from "@/public/image6.jpg"
+
+
 
 interface Invitado {
   id: string
@@ -156,8 +166,6 @@ export default function Home() {
 
   if (!mounted) return null
 
-  // 🔗 Puedes agregar links opcionales a cada detalle
-  // Si no quieres link, deja el campo link vacío o undefined
   const eventDetails = [
     {
       icon: Calendar,
@@ -183,21 +191,36 @@ export default function Home() {
   ]
 
   const galleryImages = [
-    { 
-      id: 1, 
+    {
+      id: 1,
       title: "",
-      url: "https://tu-imagen-1.jpg"
+      url: img1.src
     },
-    { 
-      id: 2, 
+    {
+      id: 2,
       title: "",
-      url: "https://tu-imagen-2.jpg"
+      url: img2.src
     },
-    { 
-      id: 3, 
+    {
+      id: 3,
       title: "",
-      url: "https://tu-imagen-3.jpg"
+      url: img3.src
     },
+    {
+      id: 4,
+      title: "",
+      url: img4.src
+    },
+    {
+      id: 5,
+      title: "",
+      url: img5.src
+    },
+    {
+      id: 6,
+      title: "",
+      url: img6.src
+    }
   ]
 
   const TimeUnit = ({ value, label }: { value: number; label: string }) => (
@@ -300,7 +323,7 @@ export default function Home() {
                 {eventDetails.map((detail, index) => {
                   const Icon = detail.icon
                   const hasLink = detail.link && detail.link.trim() !== ""
-                  
+
                   const CardContent = (
                     <div className="relative bg-card border border-accent/20 rounded-2xl p-8 text-center elegant-shadow group-hover:elegant-shadow-lg transition-all duration-300 group-hover:border-accent/40 h-full">
                       <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300">
@@ -319,8 +342,8 @@ export default function Home() {
                   )
 
                   return (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className="group relative w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
@@ -347,42 +370,27 @@ export default function Home() {
           <section className="relative py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Me viste crecer</h2>
+                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Cada imagen guarda un pedacito de su historia.</h2>
+                <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4">Celebramos no solo sus 15 años, sino el hermoso camino que ha recorrido hasta aquí.</h3>
+                <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4"></h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {galleryImages.map((image, index) => (
-                  <div
-                    key={image.id}
-                    className="group cursor-pointer"
-                    onMouseEnter={() => setHoveredImageIndex(index)}
-                    onMouseLeave={() => setHoveredImageIndex(null)}
-                  >
-                    <div className={`relative bg-card rounded-lg overflow-hidden elegant-shadow-lg transition-all duration-300 transform ${hoveredImageIndex === index ? "scale-105 -rotate-1" : "rotate-0"}`}>
-                      <div className="h-4 bg-card" />
-                      <div className="relative w-full h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
-                        <img
-                          src={image.url}
-                          alt={image.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                      {image.title && (
-                        <div className="bg-card px-4 py-6 space-y-2">
-                          <h3 className="font-serif text-lg font-bold text-foreground">{image.title}</h3>
-                          <div className="flex gap-1">
-                            {[...Array(3)].map((_, i) => (
-                              <div key={i} className="w-2 h-2 rounded-full bg-accent/40 group-hover:bg-accent transition-colors duration-300" />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-accent/30 group-hover:bg-accent/60 transition-colors duration-300" />
-                    </div>
+              <section className="relative py-20 px-4">
+                <div className="max-w-6xl mx-auto">
+                  <div className="text-center mb-12">
+                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">
+                      Cada imagen guarda un pedacito de su historia.
+                    </h2>
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4">
+                      Celebramos no solo sus 15 años, sino el hermoso camino que ha recorrido hasta aquí.
+                    </h3>
                   </div>
-                ))}
-              </div>
+
+                  <PhotoCarousel images={galleryImages} />
+                </div>
+              </section>
+
+
             </div>
           </section>
 
