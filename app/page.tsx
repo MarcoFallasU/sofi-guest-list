@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Calendar, MapPin, Music, Users, Heart, DollarSign, Shirt } from "lucide-react"
+import { Calendar, MapPin, Music, Users, Heart, DollarSign, Shirt, ExternalLink } from "lucide-react"
 
 interface Invitado {
   id: string
@@ -156,30 +156,29 @@ export default function Home() {
 
   if (!mounted) return null
 
+  // 🔗 Puedes agregar links opcionales a cada detalle
+  // Si no quieres link, deja el campo link vacío o undefined
   const eventDetails = [
     {
       icon: Calendar,
       label: "Fecha",
       value: "7 de Diciembre, 2025",
       subtext: "3:00 PM",
+      link: "", // Deja vacío si no quieres link
     },
     {
       icon: MapPin,
       label: "Ubicación",
       value: "Eventos mágicos",
       subtext: "Bo San Valentín, San José, San Rafael, 11901",
+      link: "https://maps.google.com/?q=Eventos+Magicos+San+Rafael", // Ejemplo
     },
     {
       icon: DollarSign,
-      label: "Agradezco",
-      value: "Regalos",
-      subtext: "En efectivo",
-    },
-    {
-      icon: Shirt,
-      label: "Código vestimenta",
-      value: "Formal",
-      subtext: "Tonos [color]",
+      label: "Lo importante es que estés a mi lado en mi celebración, pero si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo, que me ayude a seguir soñando en grande",
+      value: "",
+      subtext: "",
+      link: "",
     },
   ]
 
@@ -247,17 +246,17 @@ export default function Home() {
 
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-                <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Te queremos invitar</p>
+                <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Te invito a compartir conmigo la alegría de</p>
               </div>
 
               <div className={`transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
                 <h1 className="font-serif text-6xl md:text-8xl font-bold text-foreground leading-tight">
                   <span className="relative inline-block">
-                    Los 15 de
+                    Mis quince
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-accent via-accent/80 to-accent bg-clip-text text-transparent">
-                    Sofia
+                    Años
                   </span>
                 </h1>
               </div>
@@ -268,7 +267,7 @@ export default function Home() {
 
               <div className={`transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 <p className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-                  Una noche mágica para celebrar mi historia, mis sueños y mi nueva etapa.
+                  Mis padres y yo hemos preparado con mucho cariño una noche inolvidable y tu presencia la haría aún más especial.
                 </p>
               </div>
             </div>
@@ -289,27 +288,54 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Detalles */}
+          {/* Detalles - CENTRADO AUTOMÁTICO */}
           <section className="relative py-20 px-4 bg-gradient-to-b from-background via-background to-accent/5">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Información Importante</h2>
+                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Detalles de mi gran noche</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Grid que se centra automáticamente según la cantidad de elementos */}
+              <div className="flex flex-wrap justify-center gap-6">
                 {eventDetails.map((detail, index) => {
                   const Icon = detail.icon
-                  return (
-                    <div key={index} className="group relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                      <div className="relative bg-card border border-accent/20 rounded-2xl p-8 text-center elegant-shadow group-hover:elegant-shadow-lg transition-all duration-300 group-hover:border-accent/40">
-                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300">
-                          <Icon className="w-7 h-7 text-accent" />
-                        </div>
-                        <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-2">{detail.label}</p>
-                        <h3 className="font-serif text-2xl font-bold text-foreground mb-1">{detail.value}</h3>
-                        <p className="text-sm text-muted-foreground">{detail.subtext}</p>
+                  const hasLink = detail.link && detail.link.trim() !== ""
+                  
+                  const CardContent = (
+                    <div className="relative bg-card border border-accent/20 rounded-2xl p-8 text-center elegant-shadow group-hover:elegant-shadow-lg transition-all duration-300 group-hover:border-accent/40 h-full">
+                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300">
+                        <Icon className="w-7 h-7 text-accent" />
                       </div>
+                      <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-2">{detail.label}</p>
+                      {detail.value && <h3 className="font-serif text-2xl font-bold text-foreground mb-1">{detail.value}</h3>}
+                      {detail.subtext && <p className="text-sm text-muted-foreground">{detail.subtext}</p>}
+                      {hasLink && (
+                        <div className="mt-4 inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:underline">
+                          <span>Ver ubicación</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                  )
+
+                  return (
+                    <div 
+                      key={index} 
+                      className="group relative w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
+                      {hasLink ? (
+                        <a
+                          href={detail.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block h-full"
+                        >
+                          {CardContent}
+                        </a>
+                      ) : (
+                        CardContent
+                      )}
                     </div>
                   )
                 })}
@@ -342,14 +368,16 @@ export default function Home() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="bg-card px-4 py-6 space-y-2">
-                        <h3 className="font-serif text-lg font-bold text-foreground">{image.title}</h3>
-                        <div className="flex gap-1">
-                          {[...Array(3)].map((_, i) => (
-                            <div key={i} className="w-2 h-2 rounded-full bg-accent/40 group-hover:bg-accent transition-colors duration-300" />
-                          ))}
+                      {image.title && (
+                        <div className="bg-card px-4 py-6 space-y-2">
+                          <h3 className="font-serif text-lg font-bold text-foreground">{image.title}</h3>
+                          <div className="flex gap-1">
+                            {[...Array(3)].map((_, i) => (
+                              <div key={i} className="w-2 h-2 rounded-full bg-accent/40 group-hover:bg-accent transition-colors duration-300" />
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
                       <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-accent/30 group-hover:bg-accent/60 transition-colors duration-300" />
                     </div>
                   </div>
@@ -363,7 +391,7 @@ export default function Home() {
             <div className="max-w-2xl mx-auto text-center space-y-8">
               <div>
                 <h2 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-4">¿Listo para la Fiesta?</h2>
-                <p className="text-lg text-muted-foreground">Confirma tu asistencia y prepárate para una noche inolvidable</p>
+                <p className="text-lg text-muted-foreground">Confirma tu asistencia antes del <div className="mt-4 inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:underline">15 de noviembre</div> y prepárate para una noche inolvidable</p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -442,7 +470,7 @@ export default function Home() {
         <div className={`min-h-screen flex items-center justify-center px-4 py-20 ${transicionando ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}>
           <div className="max-w-2xl w-full bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-accent/20">
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground text-center mb-4">Confirma tu Asistencia</h1>
-            <p className="text-muted-foreground text-center mb-8">Nos encantaría tenerte en nuestra celebración</p>
+            <p className="text-muted-foreground text-center mb-8">Recuerda confirmar tu asistencia antes del 15 de noviembre</p>
 
             <div className="space-y-6">
               <div>
