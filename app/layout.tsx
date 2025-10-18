@@ -4,8 +4,48 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Quince Años de Sofía",
-  description: "Forma parte de la lista de asistencia para los XV de Sofía Arias Fallas",
-    generator: 'v0.app'
+  description: "Te invito a compartir conmigo la alegría de mis quince años. Mis padres y yo hemos preparado con mucho cariño una noche inolvidable.",
+  generator: 'v0.app',
+  
+  // Open Graph (Facebook, WhatsApp, LinkedIn)
+  openGraph: {
+    title: 'Quince Años de Sofía',
+    description: 'Te invito a compartir conmigo la alegría de mis quince años',
+    url: 'https://sofi-guest-list-edzu.vercel.app/',
+    siteName: 'Quince Años de Sofía',
+    images: [
+      {
+        url: '/og-image.jpg', // Coloca tu imagen en public/og-image.jpg
+        width: 1200,
+        height: 630,
+        alt: 'Invitación Quince Años de Sofía',
+      }
+    ],
+    locale: 'es_ES',
+    type: 'website',
+  },
+  
+  // Twitter
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Quince Años de Sofía',
+    description: 'Te invito a compartir conmigo la alegría de mis quince años',
+    images: ['/og-image.jpg'],
+  },
+  
+  // Otros metadatos útiles
+  robots: {
+    index: true,
+    follow: true,
+  },
+  
+  // Para cuando la agreguen a la pantalla de inicio del móvil
+  applicationName: 'Quince Años de Sofía',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Quince Años de Sofía',
+  },
 }
 
 export default function RootLayout({
