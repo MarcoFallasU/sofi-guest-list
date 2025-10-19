@@ -185,7 +185,7 @@ export default function Home() {
       icon: Gift,
       label: "Regalos",
       value: "",
-      subtext: "Si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo, que me ayude a seguir soñando en grande",
+      subtext: "Si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo",
       link: "",
     },
   ]
