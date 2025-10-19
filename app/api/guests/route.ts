@@ -33,3 +33,20 @@ export async function POST(req: Request) {
     fechaHora: new Date(created.createdAt).toLocaleString("es-ES"),
   });
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ error: "Falta el id" }, { status: 400 });
+    }
+
+    await prisma.guest.delete({ where: { id } });
+    return NextResponse.json({ ok: true });
+  } catch (e: any) {
+    console.error("DELETE /api/guests error:", e);
+    return NextResponse.json({ error: "No se pudo eliminar" }, { status: 500 });
+  }
+}
