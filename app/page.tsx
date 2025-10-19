@@ -387,7 +387,7 @@ export default function Home() {
                 <p className="text-lg text-muted-foreground">Confirma tu asistencia antes del <div className="mt-4 inline-flex items-center gap-2 text-accent text-sm font-semibold group-hover:underline">15 de noviembre</div> y prepárate para una noche inolvidable</p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 pb-20">
                 <button
                   onClick={handleConfirm}
                   onMouseEnter={() => setIsHovered(true)}
@@ -407,7 +407,8 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="seccion-invitados" className="relative py-20 px-4 bg-gradient-to-b from-background via-accent/5 to-background">
+          {false && (
+            <section id="seccion-invitados" className="relative py-20 px-4 bg-gradient-to-b from-background via-accent/5 to-background">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Quienes nos acompañan</h2>
@@ -454,7 +455,9 @@ export default function Home() {
               </div>
             </div>
           </section>
+          )}
         </>
+              
       )}
 
       {pantallaActual === "formulario" && (
