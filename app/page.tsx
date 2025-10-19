@@ -183,9 +183,9 @@ export default function Home() {
     },
     {
       icon: DollarSign,
-      label: "Lo importante es que estés a mi lado en mi celebración, pero si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo, que me ayude a seguir soñando en grande",
+      label: "Regalos",
       value: "",
-      subtext: "",
+      subtext: "Si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo, que me ayude a seguir soñando en grande",
       link: "",
     },
   ]
@@ -370,8 +370,8 @@ export default function Home() {
           <section className="relative py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Cada imagen guarda un pedacito de su historia.</h2>
-                <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4">Celebramos no solo sus 15 años, sino el hermoso camino que ha recorrido hasta aquí.</h3>
+                <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Cada imagen guarda un pedacito de mi historia.</h2>
+                <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4">Celebramos no solo mis 15 años, sino el hermoso camino que he recorrido hasta aquí.</h3>
                 <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4"></h3>
               </div>
 
