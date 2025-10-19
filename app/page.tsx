@@ -375,17 +375,8 @@ export default function Home() {
                 <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4"></h3>
               </div>
 
-              <section className="relative py-20 px-4">
+              <section className="overflow-x-hidden">
                 <div className="max-w-6xl mx-auto">
-                  <div className="text-center mb-12">
-                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">
-                      Cada imagen guarda un pedacito de su historia.
-                    </h2>
-                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground/70 mt-4">
-                      Celebramos no solo sus 15 años, sino el hermoso camino que ha recorrido hasta aquí.
-                    </h3>
-                  </div>
-
                   <PhotoCarousel images={galleryImages} />
                 </div>
               </section>
