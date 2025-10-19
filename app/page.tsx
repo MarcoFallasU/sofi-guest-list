@@ -380,7 +380,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="relative py-24 px-4 bg-gradient-to-t from-accent/10 via-background to-background">
+          <section className="relative px-4 bg-gradient-to-t from-accent/10 via-background to-background">
             <div className="max-w-2xl mx-auto text-center space-y-8">
               <div>
                 <h2 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-4">¿Listo para la Fiesta?</h2>
