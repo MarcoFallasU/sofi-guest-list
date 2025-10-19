@@ -259,7 +259,7 @@ export default function Home() {
 
       {pantallaActual === "hero" && (
         <>
-          <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+          <section className="relative min-h-[80vh] flex items-center justify-center px-4 overflow-hidden">
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
               <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
@@ -294,7 +294,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="relative px-4 py-20">
+          <section className="relative px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">¿Cuánto falta?</h2>
