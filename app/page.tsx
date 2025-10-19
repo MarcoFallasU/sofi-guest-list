@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Calendar, MapPin, Music, Users, Heart, DollarSign, Shirt, ExternalLink } from "lucide-react"
+import { Calendar, MapPin, Music, Users, Heart, DollarSign, Shirt, ExternalLink, Gift } from "lucide-react"
 import { PhotoCarousel } from "@/components/photo-carousel"
 import Image from "next/image"
 import img1 from "@/public/image1.jpg"
@@ -182,7 +182,7 @@ export default function Home() {
       link: "https://maps.google.com/?q=Eventos+Magicos+San+Rafael", // Ejemplo
     },
     {
-      icon: DollarSign,
+      icon: Gift,
       label: "Regalos",
       value: "",
       subtext: "Si deseas darme una muestra de cariño, te agradeceré un regalo en efectivo, que me ayude a seguir soñando en grande",
