@@ -19,15 +19,12 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
   const [showHint, setShowHint] = useState(false)
-
-  // Mostrar/ocultar pista (flecha) según overflow y scroll
   useEffect(() => {
     const el = scrollContainerRef.current
     if (!el) return
 
     const decide = () => {
       const hasOverflow = el.scrollWidth > el.clientWidth
-      // La mostramos solo si hay overflow y estamos al inicio
       setShowHint(hasOverflow && el.scrollLeft < 8)
     }
 
@@ -37,7 +34,6 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
     }
 
     el.addEventListener("scroll", onScroll, { passive: true })
-    // auto-ocultar a los 5s por si no se mueve
     const t = setTimeout(() => setShowHint(false), 5000)
 
     return () => {
@@ -94,7 +90,6 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
       {showHint && (
         <>
           <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
-          {/* flecha */}
           <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center">
             <div className="flex items-center gap-2 opacity-40 animate-pulse">
               <span className="text-sm font-medium text-foreground/70 hidden sm:inline">desliza</span>

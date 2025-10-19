@@ -170,16 +170,16 @@ export default function Home() {
     {
       icon: Calendar,
       label: "Fecha",
-      value: "7 de Diciembre, 2025",
+      value: "Domingo 7 de Diciembre, 2025",
       subtext: "3:00 PM",
-      link: "", // Deja vacío si no quieres link
+      link: "", 
     },
     {
       icon: MapPin,
       label: "Ubicación",
       value: "Eventos mágicos",
       subtext: "Bo San Valentín, San José, San Rafael, 11901",
-      link: "https://maps.google.com/?q=Eventos+Magicos+San+Rafael", // Ejemplo
+      link: "https://maps.google.com/?q=Eventos+Magicos+San+Rafael",
     },
     {
       icon: Gift,
@@ -239,7 +239,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background stars-pattern overflow-hidden relative">
-      {/* Estrellas */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-5">
         {stars.map((star) => (
           <div
@@ -258,7 +257,6 @@ export default function Home() {
         <div className="absolute top-1/2 right-1/4 w-12 h-12 rounded-full bg-accent/25 opacity-25 animate-float blur-sm" style={{ animationDelay: "2s" }} />
       </div>
 
-      {/* HERO */}
       {pantallaActual === "hero" && (
         <>
           <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
@@ -296,7 +294,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Cuenta regresiva */}
           <section className="relative px-4 py-20">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
@@ -311,14 +308,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Detalles - CENTRADO AUTOMÁTICO */}
           <section className="relative py-20 px-4 bg-gradient-to-b from-background via-background to-accent/5">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Detalles de mi gran noche</h2>
               </div>
 
-              {/* Grid que se centra automáticamente según la cantidad de elementos */}
               <div className="flex flex-wrap justify-center gap-6">
                 {eventDetails.map((detail, index) => {
                   const Icon = detail.icon
@@ -385,7 +380,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* CTA */}
           <section className="relative py-24 px-4 bg-gradient-to-t from-accent/10 via-background to-background">
             <div className="max-w-2xl mx-auto text-center space-y-8">
               <div>
@@ -413,7 +407,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* QUIENES NOS ACOMPAÑAN */}
           <section id="seccion-invitados" className="relative py-20 px-4 bg-gradient-to-b from-background via-accent/5 to-background">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
@@ -464,7 +457,6 @@ export default function Home() {
         </>
       )}
 
-      {/* FORMULARIO */}
       {pantallaActual === "formulario" && (
         <div className={`min-h-screen flex items-center justify-center px-4 py-20 ${transicionando ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}>
           <div className="max-w-2xl w-full bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-accent/20">
@@ -520,7 +512,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* MODAL */}
       {invitadoSeleccionado && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm" onClick={cerrarModal}>
           <div className="bg-card rounded-2xl p-8 max-w-2xl w-full elegant-shadow-lg relative animate-in fade-in zoom-in duration-300" onClick={(e) => e.stopPropagation()}>
