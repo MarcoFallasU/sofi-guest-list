@@ -49,7 +49,7 @@ export default function AdminClient() {
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
       const año = fecha.getFullYear();
       
-      let horas = fecha.getHours();
+      let horas = fecha.getHours()-6;
       const minutos = fecha.getMinutes().toString().padStart(2, '0');
       const ampm = horas >= 12 ? 'PM' : 'AM';
       
