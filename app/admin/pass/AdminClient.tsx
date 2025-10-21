@@ -48,8 +48,9 @@ export default function AdminClient() {
       const dia = fecha.getDate().toString().padStart(2, '0');
       const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
       const año = fecha.getFullYear();
-      
-      let horas = fecha.getHours()-6;
+
+      fecha.setHours(fecha.getHours() - 6);
+      let horas = fecha.getHours();
       const minutos = fecha.getMinutes().toString().padStart(2, '0');
       const ampm = horas >= 12 ? 'PM' : 'AM';
       
