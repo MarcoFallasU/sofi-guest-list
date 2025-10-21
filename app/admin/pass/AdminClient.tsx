@@ -15,13 +15,53 @@ export default function AdminClient() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // modal
   const [openModal, setOpenModal] = useState(false);
   const [modalInvitado, setModalInvitado] = useState<Invitado | null>(null);
 
-  // borrar
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
+
+  const formatearFechaHora = (fechaISO: string): string => {
+    try {
+      if (!fechaISO || typeof fechaISO !== 'string') {
+        return fechaISO || 'Fecha no disponible';
+      }
+      
+      let fecha: Date;
+      
+      if (fechaISO.includes('/') && fechaISO.includes(',')) {
+        const [fechaParte, horaParte] = fechaISO.split(', ');
+        const [dia, mes, año] = fechaParte.split('/');
+        const horaParts = horaParte.split(':');
+        const horas = parseInt(horaParts[0] ?? '0', 10);
+        const minutos = parseInt(horaParts[1] ?? '0', 10);
+        const segundos = parseInt(horaParts[2] ?? '0', 10);
+        fecha = new Date(parseInt(año, 10), parseInt(mes, 10) - 1, parseInt(dia, 10), horas, minutos, segundos);
+      } else {
+        fecha = new Date(fechaISO);
+      }
+      
+      if (isNaN(fecha.getTime())) {
+        return fechaISO;
+      }
+      
+      const dia = fecha.getDate().toString().padStart(2, '0');
+      const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+      const año = fecha.getFullYear();
+      
+      let horas = fecha.getHours();
+      const minutos = fecha.getMinutes().toString().padStart(2, '0');
+      const ampm = horas >= 12 ? 'PM' : 'AM';
+      
+      horas = horas % 12;
+      horas = horas ? horas : 12;
+      
+      return `${dia}/${mes}/${año} ${horas}:${minutos} ${ampm}`;
+    } catch (error) {
+      console.error('Error formateando fecha:', error);
+      return fechaISO;
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -29,7 +69,11 @@ export default function AdminClient() {
         const res = await fetch("/api/guests", { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data: Invitado[] = await res.json();
-        setInvitados(data);
+        const dataFormateada = data.map(inv => ({
+          ...inv,
+          fechaHora: formatearFechaHora(inv.fechaHora)
+        }));
+        setInvitados(dataFormateada);
       } catch (e: any) {
         console.error("Error fetching guests:", e);
         setError("No se pudo cargar la lista de invitados");
@@ -165,7 +209,6 @@ export default function AdminClient() {
         </div>
       </section>
 
-      {/* MODAL VER COMPLETO (se abre al clickear la tarjeta) */}
       {openModal && modalInvitado && (
         <div
           className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
